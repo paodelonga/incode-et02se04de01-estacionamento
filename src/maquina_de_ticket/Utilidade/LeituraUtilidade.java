@@ -1,9 +1,9 @@
-package maquina_de_ticket.Utilidades;
+package maquina_de_ticket.Utilidade;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Leitura {
+public class LeituraUtilidade {
     /* TODO
     * - Validação dos tipo durante entrada
     *   - utilizar coisinhas recursivas para "forcar" o usuario

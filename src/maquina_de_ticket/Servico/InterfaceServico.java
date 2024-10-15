@@ -1,13 +1,13 @@
-package maquina_de_ticket.Servicos;
+package maquina_de_ticket.Servico;
 
-import maquina_de_ticket.Utilidades.Leitura;
+import maquina_de_ticket.Utilidade.LeituraUtilidade;
 
-public class Interface {
+public class InterfaceServico {
     /* TODO
     * - Utilizar regex para validar pattern matching nas operacoes
     * */
 
-    public Interface(){
+    public InterfaceServico(){
         iniciarSistema();
     }
 
@@ -55,7 +55,7 @@ public class Interface {
 
     // TODO
     private static void exibirInformacoesTicket() {
-        String identificadorTicket = Leitura.lerString("Digite o identificador do Ticket > ");
+        String identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");
         exibirEspacamento();
 
         obterInformacoesTicket(identificadorTicket);
@@ -90,10 +90,10 @@ public class Interface {
         );
 
         while (!finalizar_alugel) {
-            switch(Leitura.lerInteiro()) {
+            switch(LeituraUtilidade.lerInteiro()) {
                 case 1:
                     exibirSeparador();
-                    mediaTempo = Leitura.lerInteiro(
+                    mediaTempo = LeituraUtilidade.lerInteiro(
                        """
                         Por quanto gostaria de ficar (em media)?
                         Digite o tempo em minutos >\s"""
@@ -114,13 +114,13 @@ public class Interface {
                     exibirVagasDisponiveis();
                     exibirEspacamento();
 
-                    mediaTempo = Leitura.lerInteiro(
+                    mediaTempo = LeituraUtilidade.lerInteiro(
                             """
                              Por quanto gostaria de ficar (em media)?
                              Digite o tempo em minutos >\s"""
                     );
 
-                    vagaDesejada = Leitura.lerInteiro(
+                    vagaDesejada = LeituraUtilidade.lerInteiro(
                             "Digite o número da vaga desejada > "
                     );
                     exibirEspacamento();
@@ -147,7 +147,7 @@ public class Interface {
 
         while (!finalizar_pagamento) {
             exibirSeparador();
-            identificadorTicket = Leitura.lerString("Digite o identificador do Ticket > ");
+            identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");
 
             exibirEspacamento();
             obterInformacoesTicket(identificadorTicket);
@@ -159,7 +159,7 @@ public class Interface {
                 [2] Retroceder\n"""
             );
 
-            switch(Leitura.lerInteiro()) {
+            switch(LeituraUtilidade.lerInteiro()) {
                 case 1:
                     exibirSeparador();
                     System.out.println("Ticket abc123u no valor de R$ 210 foi pago com sucesso!");
@@ -188,7 +188,7 @@ public class Interface {
     }
 
     public static void iniciarSistema() {
-        if(Leitura.lerEnter(obterBoasVindas())) {
+        if(LeituraUtilidade.lerEnter(obterBoasVindas())) {
             exibirSeparador();
             exibirTabelaPrecos();
             exibirEspacamento();
@@ -199,7 +199,7 @@ public class Interface {
                 exibirOperecoes();
                 exibirEspacamento();
 
-                switch(Leitura.lerInteiro()) {
+                switch(LeituraUtilidade.lerInteiro()) {
                     case 1: // Listar vagas disponiveis
                         exibirSeparador();
                         exibirVagasDisponiveis();

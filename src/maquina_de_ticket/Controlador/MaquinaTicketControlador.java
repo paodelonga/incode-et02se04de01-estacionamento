@@ -1,6 +1,6 @@
 package maquina_de_ticket.Controlador;
 
-public class MaquinaTicket {
+public class MaquinaTicketControlador {
 
     public static Boolean obterVagasDisponiveis() {
         return false;
