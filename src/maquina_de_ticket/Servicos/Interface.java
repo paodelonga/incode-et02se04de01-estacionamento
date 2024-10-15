@@ -27,7 +27,11 @@ public class Interface {
 
     // TODO
     private static void exibirVagasDisponiveis() {
-        System.out.println("");
+        System.out.println(
+            """
+            Estas são as vagas disponíveis atualmente:
+            1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
+        );
     }
 
     private static void exibirTabelaPrecos() {
@@ -46,12 +50,21 @@ public class Interface {
 
     // TODO
     private static void exibirInformacoesTicket() {
-        System.out.println("");
+
     }
 
     // TODO
     private static void alugarVaga() {
-        System.out.println("");
+        exibirVagasDisponiveis();
+        exibirEspacamento();
+        exibirTabelaPrecos();
+
+        System.out.println(
+            """
+             [1] Alugar uma vaga aletoria
+             [2] Alugar uma vaga especifica
+            """
+        );
     }
 
     // TODO
@@ -80,39 +93,44 @@ public class Interface {
 
     public static void iniciar() {
         exibirBoasVindas();
-        exibirSeparador();
-        exibirTabelaPrecos();
-        exibirEspacamento();
 
-        boolean finalizar = false;
+        if(Leitura.lerEnter()) {
+            exibirTabelaPrecos();
+            exibirEspacamento();
 
-        while(!finalizar) {
-            exibirOperecoes();
+            boolean finalizar = false;
 
-            switch(Leitura.lerInteiro()) {
-                case 1: // Listar vagas disponiveis
-                    exibirVagasDisponiveis();
-                    break;
-                case 2: // Exibir tabela de precos
-                    exibirTabelaPrecos();
-                    exibirEspacamento();
-                    break;
-                case 3: // Listar informacoes de um Ticket
-                    exibirInformacoesTicket();
-                    break;
-                case 4: // Alugar uma vaga
-                    alugarVaga();
-                    break;
-                case 5: // Pagar um Ticket
-                    pagarTicket();
-                    break;
-                case 6: // Sair do sistema
-                    finalizarSistema();
-                    finalizar = true;
-                    break;
-                default:
-                    System.out.println("default");
-                    break;
+            while(!finalizar) {
+                exibirOperecoes();
+
+                switch(Leitura.lerInteiro()) {
+                    case 1: // Listar vagas disponiveis
+                        exibirSeparador();
+                        exibirVagasDisponiveis();
+                        exibirSeparador();
+                        break;
+                    case 2: // Exibir tabela de precos
+                        exibirSeparador();
+                        exibirTabelaPrecos();
+                        exibirSeparador();
+                        break;
+                    case 3: // Listar informacoes de um Ticket
+                        exibirInformacoesTicket();
+                        break;
+                    case 4: // Alugar uma vaga
+                        alugarVaga();
+                        break;
+                    case 5: // Pagar um Ticket
+                        pagarTicket();
+                        break;
+                    case 6: // Sair do sistema
+                        finalizarSistema();
+                        finalizar = true;
+                        break;
+                    default:
+                        System.out.println("default");
+                        break;
+                }
             }
         }
     }
