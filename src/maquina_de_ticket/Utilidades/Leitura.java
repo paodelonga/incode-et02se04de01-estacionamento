@@ -26,4 +26,17 @@ public class Leitura {
         }
         return entradaLeitor;
     }
+
+    public static boolean lerEnter() {
+        leitorEntrada = new Scanner(System.in);
+        String entradaLeitor = leitorEntrada.nextLine();
+        while (!entradaLeitor.isEmpty()) {
+            entradaLeitor = leitorEntrada.nextLine();
+
+            if(entradaLeitor.isEmpty()) {
+                break;
+            }
+        }
+        return true;
+    }
 }
