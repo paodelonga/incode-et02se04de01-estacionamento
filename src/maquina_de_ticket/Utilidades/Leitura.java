@@ -24,12 +24,13 @@ public class Leitura {
     public static String lerString() {
         leitorEntrada = new Scanner(System.in);
         String entradaLeitor = leitorEntrada.nextLine();
-        while (entradaLeitor.isEmpty()) {
+        while (entradaLeitor.isBlank()) {
             entradaLeitor = leitorEntrada.nextLine();
 
-            if(!entradaLeitor.isEmpty()) {
+            if(!entradaLeitor.isBlank()) {
                 break;
             }
+            leitorEntrada.nextLine();
         }
         return entradaLeitor;
     }
@@ -46,4 +47,25 @@ public class Leitura {
         }
         return true;
     }
+
+    public static int lerInteiro(String mensagem) {
+        System.out.print(mensagem);
+        return lerInteiro();
+    }
+
+    public static float lerFloat(String mensagem) {
+        System.out.print(mensagem);
+        return lerFloat();
+    }
+
+    public static String lerString(String mensagem) {
+        System.out.print(mensagem);
+        return lerString();
+    }
+
+    public static boolean lerEnter(String mensagem) {
+        System.out.print(mensagem);
+        return lerEnter();
+    }
+
 }

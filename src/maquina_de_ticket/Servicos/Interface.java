@@ -8,7 +8,7 @@ public class Interface {
     * */
 
     public Interface(){
-        this.iniciar();
+        iniciarSistema();
     }
 
     private static void exibirEspacamento() {
@@ -19,13 +19,11 @@ public class Interface {
         System.out.println("\n====================================\n");
     }
 
-    private static void exibirBoasVindas() {
-        System.out.println(
-            """
-             Bem-vindo ao Estacionamento
-            Hora atual: 00:00, 12/12/2024
-                 Pressione [Enter]"""
-        );
+    private static String obterBoasVindas() {
+        return """
+         Bem-vindo ao Estacionamento
+        Hora atual: 00:00, 12/12/2024
+             Pressione [Enter]""";
     }
 
     // TODO
@@ -51,8 +49,21 @@ public class Interface {
         );
     }
 
+    private static void alugarNovoTicket() {
+        obterInformacoesTicket("A");
+    }
+
     // TODO
     private static void exibirInformacoesTicket() {
+        String identificadorTicket = Leitura.lerString("Digite o identificador do Ticket > ");
+        exibirEspacamento();
+
+        obterInformacoesTicket(identificadorTicket);
+    }
+
+    private static void obterInformacoesTicket(String identificador) {
+        String identificadorTicket = identificador;
+
         System.out.println(
         """
         Informações sobre o Ticket
@@ -64,8 +75,10 @@ public class Interface {
 
     // TODO
     private static void alugarVaga() {
-        exibirVagasDisponiveis();
-        exibirEspacamento();
+        boolean finalizar_alugel = false;
+        int mediaTempo;
+        int vagaDesejada;
+
         exibirTabelaPrecos();
         exibirEspacamento();
 
@@ -73,13 +86,91 @@ public class Interface {
             """
             [1] Alugar uma vaga aletoria
             [2] Alugar uma vaga especifica
-            [3] Retroceder"""
+            [3] Retroceder\n"""
         );
+
+        while (!finalizar_alugel) {
+            switch(Leitura.lerInteiro()) {
+                case 1:
+                    exibirSeparador();
+                    mediaTempo = Leitura.lerInteiro(
+                       """
+                        Por quanto gostaria de ficar (em media)?
+                        Digite o tempo em minutos >\s"""
+                    );
+
+                    exibirEspacamento();
+                    System.out.println("Vaga alugada com sucesso!");
+                    exibirEspacamento();
+
+                    // TODO
+                    // esse cara deve ser chamado por criar novo ticket
+                    alugarNovoTicket();
+                    finalizar_alugel = true;
+                    break;
+                case 2:
+                    exibirSeparador();
+                    exibirVagasDisponiveis();
+                    exibirEspacamento();
+
+                    mediaTempo = Leitura.lerInteiro(
+                            """
+                             Por quanto gostaria de ficar (em media)?
+                             Digite o tempo em minutos >\s"""
+                    );
+
+                    vagaDesejada = Leitura.lerInteiro(
+                            "Digite o número da vaga desejada > "
+                    );
+                    exibirEspacamento();
+
+                    System.out.println("Vaga alugada com sucesso!");
+                    exibirEspacamento();
+
+                    // TODO
+                    // esse cara deve ser chamado por criar novo ticket
+                    alugarNovoTicket();
+                    finalizar_alugel = true;
+                    break;
+                case 3:
+                    finalizar_alugel = true;
+                    break;
+            };
+        }
     }
 
     // TODO
     private static void pagarTicket() {
-        System.out.println("");
+    String identificadorTicket;
+    boolean finalizar_pagamento = false;
+
+        while (!finalizar_pagamento) {
+            exibirSeparador();
+            identificadorTicket = Leitura.lerString("Digite o identificador do Ticket > ");
+
+            exibirEspacamento();
+            obterInformacoesTicket(identificadorTicket);
+            exibirEspacamento();
+
+            System.out.println(
+                """
+                [1] Pagar
+                [2] Retroceder\n"""
+            );
+
+            switch(Leitura.lerInteiro()) {
+                case 1:
+                    exibirSeparador();
+                    System.out.println("Ticket abc123u no valor de R$ 210 foi pago com sucesso!");
+                    finalizar_pagamento = true;
+                    break;
+                case 2:
+                    finalizar_pagamento = true;
+                    break;
+            }
+            exibirSeparador();
+        }
+
     }
 
     private static void exibirOperecoes() {
@@ -95,15 +186,9 @@ public class Interface {
         );
     }
 
-    // TODO
-    private static void finalizarSistema() {
-        System.out.println("");
-    }
-
-    public static void iniciar() {
-        exibirBoasVindas();
-
-        if(Leitura.lerEnter()) {
+    public static void iniciarSistema() {
+        if(Leitura.lerEnter(obterBoasVindas())) {
+            exibirSeparador();
             exibirTabelaPrecos();
             exibirEspacamento();
 
@@ -130,30 +215,14 @@ public class Interface {
                         exibirSeparador();
                         break;
                     case 4: // Alugar uma vaga
-                        boolean finalizar_alugel = false;
-                        //
-                        while(!finalizar_alugel) {
-                            exibirSeparador();
-                            alugarVaga();
-                            exibirEspacamento();
-
-                            switch(Leitura.lerInteiro()) {
-                                case 1:
-                                    break;
-                                case 2:
-                                    break;
-                                case 3:
-                                    exibirSeparador();
-                                    finalizar_alugel = true;
-                                    break;
-                            };
-                        }
+                        exibirSeparador();
+                        alugarVaga();
+                        exibirSeparador();
                         break;
                     case 5: // Pagar um Ticket
                         pagarTicket();
                         break;
                     case 6: // Sair do sistema
-                        finalizarSistema();
                         finalizar_sistema = true;
                         break;
 
