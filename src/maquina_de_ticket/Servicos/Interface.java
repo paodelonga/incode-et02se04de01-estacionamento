@@ -42,7 +42,7 @@ public class Interface {
             | Tabela de Preços |
             | Tempo | Preço |
             | 1hora | 24.00 |
-            | 2horas | 28.0cSt0 |
+            | 2horas | 28.0 |
             | 3horas | 32.00 |
             | Adicional | 3.20/hora |
             | ====================== |"""
