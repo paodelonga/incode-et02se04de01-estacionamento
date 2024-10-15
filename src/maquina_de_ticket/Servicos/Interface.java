@@ -106,6 +106,7 @@ public class Interface {
                     // TODO
                     // esse cara deve ser chamado por criar novo ticket
                     alugarNovoTicket();
+
                     finalizar_alugel = true;
                     break;
                 case 2:
