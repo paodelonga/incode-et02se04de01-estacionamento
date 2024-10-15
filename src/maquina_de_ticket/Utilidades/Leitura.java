@@ -1,5 +1,6 @@
 package maquina_de_ticket.Utilidades;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Leitura {
@@ -14,29 +15,49 @@ public class Leitura {
     private static Scanner leitorEntrada = new Scanner(System.in);
 
     public static int lerInteiro() {
-        return leitorEntrada.nextInt();
+        try {
+            return leitorEntrada.nextInt();
+        } catch (InputMismatchException e) {
+            leitorEntrada.nextLine();
+            return lerInteiro();
+        }
     }
 
     public static float lerFloat() {
-        return leitorEntrada.nextFloat();
+        try {
+            return leitorEntrada.nextFloat();
+        } catch (InputMismatchException e) {
+            leitorEntrada.nextLine();
+            return lerFloat();
+        }
+
     }
 
     public static String lerString() {
-        leitorEntrada = new Scanner(System.in);
-        String entradaLeitor = leitorEntrada.nextLine();
-        while (entradaLeitor.isBlank()) {
-            entradaLeitor = leitorEntrada.nextLine();
+        try {
+            leitorEntrada = new Scanner(System.in);
+            String entradaLeitor = leitorEntrada.nextLine();
 
-            if(!entradaLeitor.isBlank()) {
-                break;
+            while (entradaLeitor.isBlank()) {
+                entradaLeitor = leitorEntrada.nextLine();
+
+                if(!entradaLeitor.isBlank()) {
+                    break;
+                }
+                leitorEntrada.nextLine();
             }
+
+            return entradaLeitor;
+        } catch (InputMismatchException e) {
             leitorEntrada.nextLine();
+            return lerString();
         }
-        return entradaLeitor;
+
     }
 
     public static boolean lerEnter() {
         leitorEntrada = new Scanner(System.in);
+
         String entradaLeitor = leitorEntrada.nextLine();
         while (!entradaLeitor.isEmpty()) {
             entradaLeitor = leitorEntrada.nextLine();
