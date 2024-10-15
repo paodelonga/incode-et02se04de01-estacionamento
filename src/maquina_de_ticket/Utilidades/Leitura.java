@@ -3,6 +3,13 @@ package maquina_de_ticket.Utilidades;
 import java.util.Scanner;
 
 public class Leitura {
+    /* TODO
+    * - Validação dos tipo durante entrada
+    *   - utilizar coisinhas recursivas para "forcar" o usuario
+    *   a utilizar o tipo correto de dado
+    *   - tratamento de execeptions
+    *
+    * */
 
     private static Scanner leitorEntrada = new Scanner(System.in);
 

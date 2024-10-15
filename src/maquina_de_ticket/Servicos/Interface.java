@@ -3,6 +3,9 @@ package maquina_de_ticket.Servicos;
 import maquina_de_ticket.Utilidades.Leitura;
 
 public class Interface {
+    /* TODO
+    * - Utilizar regex para validar pattern matching nas operacoes
+    * */
 
     public Interface(){
         this.iniciar();
@@ -50,7 +53,13 @@ public class Interface {
 
     // TODO
     private static void exibirInformacoesTicket() {
-
+        System.out.println(
+        """
+        Informações sobre o Ticket
+        Ticket ID: abc123u
+        Vaga Ocupada: 102
+        Preço total: R$ 210"""
+        );
     }
 
     // TODO
@@ -58,12 +67,13 @@ public class Interface {
         exibirVagasDisponiveis();
         exibirEspacamento();
         exibirTabelaPrecos();
+        exibirEspacamento();
 
         System.out.println(
             """
-             [1] Alugar uma vaga aletoria
-             [2] Alugar uma vaga especifica
-            """
+            [1] Alugar uma vaga aletoria
+            [2] Alugar uma vaga especifica
+            [3] Retroceder"""
         );
     }
 
@@ -81,8 +91,7 @@ public class Interface {
             [3] Listar informações de um Ticket
             [4] Alugar uma vaga
             [5] Pagar um Ticket
-            [6] Sair do sistema
-            """
+            [6] Sair do sistema"""
         );
     }
 
@@ -98,10 +107,11 @@ public class Interface {
             exibirTabelaPrecos();
             exibirEspacamento();
 
-            boolean finalizar = false;
+            boolean finalizar_sistema = false;
 
-            while(!finalizar) {
+            while(!finalizar_sistema) {
                 exibirOperecoes();
+                exibirEspacamento();
 
                 switch(Leitura.lerInteiro()) {
                     case 1: // Listar vagas disponiveis
@@ -115,18 +125,38 @@ public class Interface {
                         exibirSeparador();
                         break;
                     case 3: // Listar informacoes de um Ticket
+                        exibirSeparador();
                         exibirInformacoesTicket();
+                        exibirSeparador();
                         break;
                     case 4: // Alugar uma vaga
-                        alugarVaga();
+                        boolean finalizar_alugel = false;
+                        //
+                        while(!finalizar_alugel) {
+                            exibirSeparador();
+                            alugarVaga();
+                            exibirEspacamento();
+
+                            switch(Leitura.lerInteiro()) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    exibirSeparador();
+                                    finalizar_alugel = true;
+                                    break;
+                            };
+                        }
                         break;
                     case 5: // Pagar um Ticket
                         pagarTicket();
                         break;
                     case 6: // Sair do sistema
                         finalizarSistema();
-                        finalizar = true;
+                        finalizar_sistema = true;
                         break;
+
                     default:
                         System.out.println("default");
                         break;
