@@ -1,17 +1,28 @@
 package maquina_de_ticket.Entidade;
 
-public class VagaEntidade {
-    Integer identificador;
+import java.time.LocalDateTime;
 
-    public VagaEntidade(Integer identificador) {
+public class VagaEntidade {
+    private Short identificador;
+    private LocalDateTime tempoOcupacao;
+
+    public VagaEntidade(Short identificador) {
         this.identificador = identificador;
     }
 
-    public Integer getIdentificador() {
+    public Short getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(Integer identificador) {
+    public LocalDateTime getTempoOcupacao() {
+        return tempoOcupacao;
+    }
+
+    public void setIdentificador(Short identificador) {
         this.identificador = identificador;
+    }
+
+    public void setTempoOcupacao(LocalDateTime tempoOcupacao) {
+        this.tempoOcupacao = tempoOcupacao;
     }
 }

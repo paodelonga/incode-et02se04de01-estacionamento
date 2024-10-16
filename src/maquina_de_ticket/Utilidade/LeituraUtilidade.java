@@ -18,6 +18,7 @@ public class LeituraUtilidade {
         try {
             return leitorEntrada.nextInt();
         } catch (InputMismatchException e) {
+            System.out.print("ERRO: Entrada inválida. Insiria um número inteiro.\n");
             leitorEntrada.nextLine();
             return lerInteiro();
         }
@@ -27,32 +28,26 @@ public class LeituraUtilidade {
         try {
             return leitorEntrada.nextFloat();
         } catch (InputMismatchException e) {
+            System.out.print("ERRO: Entrada inválida. Insiria um número quebrado por pontos.\n");
             leitorEntrada.nextLine();
             return lerFloat();
         }
-
     }
 
     public static String lerString() {
-        try {
-            leitorEntrada = new Scanner(System.in);
-            String entradaLeitor = leitorEntrada.nextLine();
+        leitorEntrada = new Scanner(System.in);
+        String entradaLeitor = leitorEntrada.nextLine();
 
-            while (entradaLeitor.isBlank()) {
-                entradaLeitor = leitorEntrada.nextLine();
+        while (entradaLeitor.isBlank()) {
+            System.out.print("ERRO: Entrada inválida. A Entrada não pode ser vazia.\n");
+            entradaLeitor = leitorEntrada.nextLine();
 
-                if(!entradaLeitor.isBlank()) {
-                    break;
-                }
-                leitorEntrada.nextLine();
+            if(!entradaLeitor.isBlank()) {
+                break;
             }
-
-            return entradaLeitor;
-        } catch (InputMismatchException e) {
-            leitorEntrada.nextLine();
-            return lerString();
         }
 
+        return entradaLeitor;
     }
 
     public static boolean lerEnter() {

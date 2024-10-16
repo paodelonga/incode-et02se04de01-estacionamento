@@ -3,10 +3,6 @@ package maquina_de_ticket.Servico;
 import maquina_de_ticket.Utilidade.LeituraUtilidade;
 
 public class InterfaceServico {
-    /* TODO
-    * - Utilizar regex para validar pattern matching nas operacoes
-    * */
-
     public InterfaceServico(){
         iniciarSistema();
     }
@@ -67,8 +63,8 @@ public class InterfaceServico {
         System.out.println(
         """
         Informações sobre o Ticket
-        Ticket ID: abc123u
-        Vaga Ocupada: 102
+        Identificador do Ticket: abc123u
+        Vaga ocupada: 102
         Preço total: R$ 210"""
         );
     }
