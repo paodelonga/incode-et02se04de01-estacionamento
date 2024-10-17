@@ -15,21 +15,43 @@ public class LeituraUtilidade {
     private static Scanner leitorEntrada = new Scanner(System.in);
 
     public static int lerInteiro() {
+        String entradaLeitor = leitorEntrada.nextLine();
+
+        while (entradaLeitor.isBlank()) {
+            System.out.print("ERRO: Entrada inválida, a entrada não pode ser vazia. ");
+            entradaLeitor = leitorEntrada.nextLine();
+
+            if(!entradaLeitor.isBlank()) {
+                break;
+            }
+        }
+
         try {
-            return leitorEntrada.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.print("ERRO: Entrada inválida. Insiria um número inteiro.\n");
-            leitorEntrada.nextLine();
+            return Integer.parseInt(entradaLeitor);
+        } catch (NumberFormatException e) {
+            System.out.print("ERRO: Entrada inválida, insira um número inteiro. ");
+            leitorEntrada.reset();
             return lerInteiro();
         }
     }
 
     public static float lerFloat() {
+        String entradaLeitor = leitorEntrada.nextLine();
+
+        while (entradaLeitor.isBlank()) {
+            System.out.print("ERRO: Entrada inválida, a entrada não pode ser vazia. ");
+            entradaLeitor = leitorEntrada.nextLine();
+
+            if(!entradaLeitor.isBlank()) {
+                break;
+            }
+        }
+
         try {
-            return leitorEntrada.nextFloat();
-        } catch (InputMismatchException e) {
-            System.out.print("ERRO: Entrada inválida. Insiria um número quebrado por pontos.\n");
-            leitorEntrada.nextLine();
+            return Float.parseFloat(entradaLeitor);
+        } catch (NumberFormatException e) {
+            System.out.print("ERRO: Entrada inválida, insira um número delimitado por pontos. ");
+            leitorEntrada.reset();
             return lerFloat();
         }
     }
@@ -39,7 +61,7 @@ public class LeituraUtilidade {
         String entradaLeitor = leitorEntrada.nextLine();
 
         while (entradaLeitor.isBlank()) {
-            System.out.print("ERRO: Entrada inválida. A Entrada não pode ser vazia.\n");
+            System.out.print("ERRO: Entrada inválida, a entrada não pode ser vazia. ");
             entradaLeitor = leitorEntrada.nextLine();
 
             if(!entradaLeitor.isBlank()) {
@@ -51,9 +73,8 @@ public class LeituraUtilidade {
     }
 
     public static boolean lerEnter() {
-        leitorEntrada = new Scanner(System.in);
-
         String entradaLeitor = leitorEntrada.nextLine();
+
         while (!entradaLeitor.isEmpty()) {
             entradaLeitor = leitorEntrada.nextLine();
 

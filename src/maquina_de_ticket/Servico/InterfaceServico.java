@@ -22,6 +22,19 @@ public class InterfaceServico {
              Pressione [Enter]""";
     }
 
+    private static void exibirOperacoe() {
+        System.out.println(
+            """
+            Escolha uma operação
+            [1] Listar vagas disponíveis
+            [2] Exibir tabela de preços
+            [3] Listar informações de um Ticket
+            [4] Alugar uma vaga
+            [5] Pagar um Ticket
+            [6] Sair do sistema"""
+        );
+    }
+
     // TODO
     private static void exibirVagasDisponiveis() {
         System.out.println(
@@ -75,17 +88,17 @@ public class InterfaceServico {
         int mediaTempo;
         int vagaDesejada;
 
-        exibirTabelaPrecos();
-        exibirEspacamento();
-
-        System.out.println(
-            """
-            [1] Alugar uma vaga aletoria
-            [2] Alugar uma vaga especifica
-            [3] Retroceder\n"""
-        );
-
         while (!finalizar_alugel) {
+            exibirTabelaPrecos();
+            exibirEspacamento();
+
+            System.out.println(
+                    """
+                    [1] Alugar uma vaga aletoria
+                    [2] Alugar uma vaga especifica
+                    [3] Retroceder\n"""
+            );
+
             switch(LeituraUtilidade.lerInteiro()) {
                 case 1:
                     exibirSeparador();
@@ -132,20 +145,20 @@ public class InterfaceServico {
                 case 3:
                     finalizar_alugel = true;
                     break;
+                default:
+                    System.out.println("\nERRO: Uma opção inexistente foi selecionada.\n");
+                    break;
             };
         }
     }
 
     // TODO
     private static void pagarTicket() {
-    String identificadorTicket;
-    boolean finalizar_pagamento = false;
+        boolean finalizar_pagamento = false;
+        String identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");;
 
         while (!finalizar_pagamento) {
             exibirSeparador();
-            identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");
-
-            exibirEspacamento();
             obterInformacoesTicket(identificadorTicket);
             exibirEspacamento();
 
@@ -159,28 +172,19 @@ public class InterfaceServico {
                 case 1:
                     exibirSeparador();
                     System.out.println("Ticket abc123u no valor de R$ 210 foi pago com sucesso!");
+                    exibirSeparador();
                     finalizar_pagamento = true;
                     break;
                 case 2:
+                    exibirSeparador();
                     finalizar_pagamento = true;
                     break;
+                default:
+                    System.out.println("\nERRO: Uma opção inexistente foi selecionada.");
+                    break;
             }
-            exibirSeparador();
         }
 
-    }
-
-    private static void exibirOperecoes() {
-        System.out.println(
-            """
-            Escolha uma operação
-            [1] Listar vagas disponíveis
-            [2] Exibir tabela de preços
-            [3] Listar informações de um Ticket
-            [4] Alugar uma vaga
-            [5] Pagar um Ticket
-            [6] Sair do sistema"""
-        );
     }
 
     public static void iniciarSistema() {
@@ -192,7 +196,7 @@ public class InterfaceServico {
             boolean finalizar_sistema = false;
 
             while(!finalizar_sistema) {
-                exibirOperecoes();
+                exibirOperacoe();
                 exibirEspacamento();
 
                 switch(LeituraUtilidade.lerInteiro()) {
@@ -222,9 +226,8 @@ public class InterfaceServico {
                     case 6: // Sair do sistema
                         finalizar_sistema = true;
                         break;
-
                     default:
-                        System.out.println("default");
+                        System.out.println("\nERRO: Uma opção inexistente foi selecionada.\n");
                         break;
                 }
             }
