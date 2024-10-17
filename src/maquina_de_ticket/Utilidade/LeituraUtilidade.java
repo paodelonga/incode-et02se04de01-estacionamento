@@ -4,14 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LeituraUtilidade {
-    /* TODO
-    * - Validação dos tipo durante entrada
-    *   - utilizar coisinhas recursivas para "forcar" o usuario
-    *   a utilizar o tipo correto de dado
-    *   - tratamento de execeptions
-    *
-    * */
-
     private static Scanner leitorEntrada = new Scanner(System.in);
 
     public static int lerInteiro() {
@@ -21,7 +13,7 @@ public class LeituraUtilidade {
             System.out.print("ERRO: Entrada inválida, a entrada não pode ser vazia. ");
             entradaLeitor = leitorEntrada.nextLine();
 
-            if(!entradaLeitor.isBlank()) {
+            if (!entradaLeitor.isBlank()) {
                 break;
             }
         }
@@ -42,7 +34,7 @@ public class LeituraUtilidade {
             System.out.print("ERRO: Entrada inválida, a entrada não pode ser vazia. ");
             entradaLeitor = leitorEntrada.nextLine();
 
-            if(!entradaLeitor.isBlank()) {
+            if (!entradaLeitor.isBlank()) {
                 break;
             }
         }
@@ -64,7 +56,7 @@ public class LeituraUtilidade {
             System.out.print("ERRO: Entrada inválida, a entrada não pode ser vazia. ");
             entradaLeitor = leitorEntrada.nextLine();
 
-            if(!entradaLeitor.isBlank()) {
+            if (!entradaLeitor.isBlank()) {
                 break;
             }
         }
@@ -78,7 +70,7 @@ public class LeituraUtilidade {
         while (!entradaLeitor.isEmpty()) {
             entradaLeitor = leitorEntrada.nextLine();
 
-            if(entradaLeitor.isEmpty()) {
+            if (entradaLeitor.isEmpty()) {
                 break;
             }
         }
