@@ -67,7 +67,7 @@ public final class InterfaceServico {
     // TODO
     private static void exibirInformacoesTicket() {
         String identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");
-        exibirEspacamento();
+        Interface.exibirEspacamento();
 
         obterInformacoesTicket(identificadorTicket);
     }
@@ -92,7 +92,7 @@ public final class InterfaceServico {
 
         while (!finalizar_alugel) {
             exibirTabelaPrecos();
-            exibirEspacamento();
+            Interface.exibirEspacamento();
 
             System.out.println(
                     """
@@ -103,16 +103,16 @@ public final class InterfaceServico {
 
             switch(LeituraUtilidade.lerInteiro()) {
                 case 1:
-                    exibirSeparador();
+                    Interface.exibirSeparador();
                     mediaTempo = LeituraUtilidade.lerInteiro(
                        """
                         Por quanto gostaria de ficar (em media)?
                         Digite o tempo em minutos >\s"""
                     );
 
-                    exibirEspacamento();
+                    Interface.exibirEspacamento();
                     System.out.println("Vaga alugada com sucesso!");
-                    exibirEspacamento();
+                    Interface.exibirEspacamento();
 
                     // TODO
                     // esse cara deve ser chamado por criar novo ticket
@@ -121,9 +121,9 @@ public final class InterfaceServico {
                     finalizar_alugel = true;
                     break;
                 case 2:
-                    exibirSeparador();
+                    Interface.exibirSeparador();
                     exibirVagasDisponiveis();
-                    exibirEspacamento();
+                    Interface.exibirEspacamento();
 
                     mediaTempo = LeituraUtilidade.lerInteiro(
                             """
@@ -134,10 +134,10 @@ public final class InterfaceServico {
                     vagaDesejada = LeituraUtilidade.lerInteiro(
                             "Digite o número da vaga desejada > "
                     );
-                    exibirEspacamento();
+                    Interface.exibirEspacamento();
 
                     System.out.println("Vaga alugada com sucesso!");
-                    exibirEspacamento();
+                    Interface.exibirEspacamento();
 
                     // TODO
                     // esse cara deve ser chamado por criar novo ticket
@@ -160,9 +160,9 @@ public final class InterfaceServico {
         String identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");;
 
         while (!finalizar_pagamento) {
-            exibirSeparador();
+            Interface.exibirSeparador();
             obterInformacoesTicket(identificadorTicket);
-            exibirEspacamento();
+            Interface.exibirEspacamento();
 
             System.out.println(
                 """
@@ -172,13 +172,13 @@ public final class InterfaceServico {
 
             switch(LeituraUtilidade.lerInteiro()) {
                 case 1:
-                    exibirSeparador();
+                    Interface.exibirSeparador();
                     System.out.println("Ticket abc123u no valor de R$ 210 foi pago com sucesso!");
-                    exibirSeparador();
+                    Interface.exibirSeparador();
                     finalizar_pagamento = true;
                     break;
                 case 2:
-                    exibirSeparador();
+                    Interface.exibirSeparador();
                     finalizar_pagamento = true;
                     break;
                 default:
@@ -191,36 +191,36 @@ public final class InterfaceServico {
 
     public static void iniciarSistema() {
         if(LeituraUtilidade.lerEnter(obterBoasVindas())) {
-            exibirSeparador();
+            Interface.exibirSeparador();
             exibirTabelaPrecos();
-            exibirEspacamento();
+            Interface.exibirEspacamento();
 
             boolean finalizar_sistema = false;
 
             while(!finalizar_sistema) {
-                exibirOperacoe();
-                exibirEspacamento();
+                exibirOperacoes();
+                Interface.exibirEspacamento();
 
                 switch(LeituraUtilidade.lerInteiro()) {
                     case 1: // Listar vagas disponiveis
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         exibirVagasDisponiveis();
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         break;
                     case 2: // Exibir tabela de precos
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         exibirTabelaPrecos();
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         break;
                     case 3: // Listar informacoes de um Ticket
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         exibirInformacoesTicket();
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         break;
                     case 4: // Alugar uma vaga
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         alugarVaga();
-                        exibirSeparador();
+                        Interface.exibirSeparador();
                         break;
                     case 5: // Pagar um Ticket
                         pagarTicket();
