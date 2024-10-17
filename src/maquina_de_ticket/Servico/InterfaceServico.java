@@ -15,6 +15,8 @@ public class InterfaceServico {
         System.out.println("\n====================================\n");
     }
 
+public final class InterfaceServico {
+    // TODO
     private static String obterBoasVindas() {
         return """
          Bem-vindo ao Estacionamento
