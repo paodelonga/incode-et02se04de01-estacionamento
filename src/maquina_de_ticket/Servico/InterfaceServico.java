@@ -1,19 +1,9 @@
 package maquina_de_ticket.Servico;
 
 import maquina_de_ticket.Utilidade.LeituraUtilidade;
+import maquina_de_ticket.Utilidade.Interface;
 
-public class InterfaceServico {
-    public InterfaceServico(){
-        iniciarSistema();
-    }
-
-    private static void exibirEspacamento() {
-        System.out.print("\n");
-    }
-
-    private static void exibirSeparador() {
-        System.out.println("\n====================================\n");
-    }
+import java.time.format.DateTimeFormatter;
 
 public final class InterfaceServico {
     // TODO
@@ -24,7 +14,7 @@ public final class InterfaceServico {
              Pressione [Enter]""";
     }
 
-    private static void exibirOperacoe() {
+    private static void exibirOperacoes() {
         System.out.println(
             """
             Escolha uma operação
@@ -46,6 +36,7 @@ public final class InterfaceServico {
         );
     }
 
+    // TODO
     private static void exibirTabelaPrecos() {
         System.out.println(
             """
@@ -60,6 +51,7 @@ public final class InterfaceServico {
         );
     }
 
+    // TODO
     private static void alugarNovoTicket() {
         obterInformacoesTicket("A");
     }
