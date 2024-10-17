@@ -2,11 +2,11 @@ package maquina_de_ticket.Entidade;
 
 import java.time.LocalDateTime;
 
-public class VagaEntidade {
+public class Vaga {
     private Short identificador;
     private LocalDateTime tempoOcupacao;
 
-    public VagaEntidade(Short identificador) {
+    public Vaga(Short identificador) {
         this.identificador = identificador;
     }
 

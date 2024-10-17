@@ -2,22 +2,22 @@ package maquina_de_ticket.Entidade;
 
 import java.time.LocalDateTime;
 
-public class TicketEntidade {
-    private IdentificadorEntidade identificador;
-    private EstadoPagamentoEntidade estadoPagamento;
+public class Ticket {
+    private Identificador identificador;
+    private EstadoPagamento estadoPagamento;
     private Integer preco;
-    private VagaEntidade vagaReferente;
+    private Vaga vagaReferente;
     private LocalDateTime dataAquisicao;
 
-    public TicketEntidade(IdentificadorEntidade identificador) {
+    public Ticket(Identificador identificador) {
         this.identificador = identificador;
     }
 
-    public IdentificadorEntidade getIdentificador() {
+    public Identificador getIdentificador() {
         return identificador;
     }
 
-    public EstadoPagamentoEntidade getEstadoPagamento() {
+    public EstadoPagamento getEstadoPagamento() {
         return estadoPagamento;
     }
 
@@ -25,7 +25,7 @@ public class TicketEntidade {
         return preco;
     }
 
-    public VagaEntidade getVagaReferente() {
+    public Vaga getVagaReferente() {
         return vagaReferente;
     }
 
@@ -33,11 +33,11 @@ public class TicketEntidade {
         return dataAquisicao;
     }
 
-    public void setIdentificador(IdentificadorEntidade identificador) {
+    public void setIdentificador(Identificador identificador) {
         this.identificador = identificador;
     }
 
-    public void setEstadoPagamento(EstadoPagamentoEntidade estadoPagamento) {
+    public void setEstadoPagamento(EstadoPagamento estadoPagamento) {
         this.estadoPagamento = estadoPagamento;
     }
 
@@ -45,7 +45,7 @@ public class TicketEntidade {
         this.preco = preco;
     }
 
-    public void setVagaReferente(VagaEntidade vagaReferente) {
+    public void setVagaReferente(Vaga vagaReferente) {
         this.vagaReferente = vagaReferente;
     }
 

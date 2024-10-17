@@ -1,10 +1,10 @@
 package maquina_de_ticket.Entidade;
 
-public class IdentificadorEntidade {
+public class Identificador {
     private String identificador_longo;
     private String identificador_curto;
 
-    public IdentificadorEntidade(String identificador_longo) {
+    public Identificador(String identificador_longo) {
         this.identificador_longo = identificador_longo;
         this.identificador_curto = identificador_longo.split("-")[0];
     }

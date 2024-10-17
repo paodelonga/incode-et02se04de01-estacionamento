@@ -2,10 +2,10 @@ package maquina_de_ticket.Entidade;
 
 import java.util.HashMap;
 
-public class TabelaPrecoEntidade {
+public class TabelaPreco {
     HashMap<String, Float> tabelaPreco;
 
-    public TabelaPrecoEntidade(HashMap<String, Float> tabelaPreco) {
+    public TabelaPreco(HashMap<String, Float> tabelaPreco) {
         this.tabelaPreco = tabelaPreco;
     }
 
