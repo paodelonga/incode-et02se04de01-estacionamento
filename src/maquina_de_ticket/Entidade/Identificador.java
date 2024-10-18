@@ -1,27 +1,27 @@
 package maquina_de_ticket.Entidade;
 
 public class Identificador {
-    private String identificador_longo;
-    private String identificador_curto;
+    private String identificadorLongo;
+    private String identificadorCurto;
 
     public Identificador(String identificador_longo) {
-        this.identificador_longo = identificador_longo;
-        this.identificador_curto = identificador_longo.split("-")[0];
+        identificadorLongo = identificador_longo;
+        identificadorCurto = identificador_longo.split("-")[0];
     }
 
     public String getIdentificadorCurto() {
-        return identificador_curto;
+        return identificadorCurto;
     }
 
     public String getIdentificadorLongo() {
-        return identificador_longo;
+        return identificadorLongo;
     }
 
     public void setIdentificadorLongo(String identificador_longo) {
-        this.identificador_longo = identificador_longo;
+        identificadorLongo = identificador_longo;
     }
 
     public void setIdentificadorCurto(String identificador_curto) {
-        this.identificador_curto = identificador_curto;
+        identificadorCurto = identificador_curto;
     }
 }

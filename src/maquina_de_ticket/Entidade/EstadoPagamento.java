@@ -5,7 +5,7 @@ public enum EstadoPagamento {
 
     private Integer estadoPagamento;
 
-    EstadoPagamento(Integer estadoPagamento) {
-        this.estadoPagamento = estadoPagamento;
+    EstadoPagamento(Integer estado_pagamento) {
+        estadoPagamento = estado_pagamento;
     }
 }
