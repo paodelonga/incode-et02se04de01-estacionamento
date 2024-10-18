@@ -1,6 +1,6 @@
 package maquina_de_ticket.Utilidade;
 
-public class Interface {
+public final class Interface {
     public static void exibirEspacamento() {
         System.out.print("\n");
     }

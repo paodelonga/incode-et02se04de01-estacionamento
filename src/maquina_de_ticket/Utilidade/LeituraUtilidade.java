@@ -3,7 +3,7 @@ package maquina_de_ticket.Utilidade;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LeituraUtilidade {
+public final class LeituraUtilidade {
     private static Scanner leitorEntrada = new Scanner(System.in);
 
     public static int lerInteiro() {
