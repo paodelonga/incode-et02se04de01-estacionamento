@@ -1,9 +1,9 @@
-package maquina_de_ticket.Servico;
+package maquina_de_ticket.UI;
 
 import maquina_de_ticket.Utilidade.LeituraUtilidade;
 import maquina_de_ticket.Utilidade.Interface;
 
-public final class InterfaceServico {
+public final class InterfaceUI {
     // TODO
     private static String obterBoasVindas() {
         return """
