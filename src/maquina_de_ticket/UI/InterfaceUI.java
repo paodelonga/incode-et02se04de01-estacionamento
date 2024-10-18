@@ -93,8 +93,7 @@ public final class InterfaceUI {
         while (!finalizarAlugel) {
             exibirTabelaPrecos();
             Interface.exibirEspacamento();
-
-            System.out.println(
+            System.out.print(
                     """
                     [>] Operações disponíveis
                     [1] Alugar uma vaga aletoria
@@ -161,14 +160,14 @@ public final class InterfaceUI {
                 default:
                     System.out.println("\n[ERRO]: Uma opção inexistente foi selecionada.\n");
                     break;
-            };
+            }
         }
     }
 
     // TODO
     private static void pagarTicket() {
         boolean finalizar_pagamento = false;
-        String identificadorTicket = LeituraUtilidade.lerString("[>] Digite o identificador do Ticket: ");;
+        String identificadorTicket = LeituraUtilidade.lerString("[>] Digite o identificador do Ticket: ");
 
         while (!finalizar_pagamento) {
             Interface.exibirSeparador();
