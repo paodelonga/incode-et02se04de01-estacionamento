@@ -3,8 +3,6 @@ package maquina_de_ticket.Servico;
 import maquina_de_ticket.Utilidade.LeituraUtilidade;
 import maquina_de_ticket.Utilidade.Interface;
 
-import java.time.format.DateTimeFormatter;
-
 public final class InterfaceServico {
     // TODO
     private static String obterBoasVindas() {
@@ -17,13 +15,13 @@ public final class InterfaceServico {
     private static void exibirOperacoes() {
         System.out.println(
             """
-            Escolha uma operação
-            [1] Listar vagas disponíveis
-            [2] Exibir tabela de preços
-            [3] Listar informações de um Ticket
-            [4] Alugar uma vaga
-            [5] Pagar um Ticket
-            [6] Sair do sistema"""
+            [>] Operações disponíveis.
+                [1] Listar vagas disponíveis
+                [2] Exibir tabela de preços
+                [3] Listar informações de um Ticket
+                [4] Alugar uma vaga
+                [5] Pagar um Ticket
+                [6] Sair do sistema"""
         );
     }
 
@@ -31,8 +29,8 @@ public final class InterfaceServico {
     private static void exibirVagasDisponiveis() {
         System.out.println(
             """
-            Estas são as vagas disponíveis atualmente:
-            1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
+            [>] Estas são as vagas disponíveis atualmente:
+                1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
         );
     }
 
@@ -40,14 +38,15 @@ public final class InterfaceServico {
     private static void exibirTabelaPrecos() {
         System.out.println(
             """
-            Esta é a nossa tabela de preços
-            | Tabela de Preços |
-            | Tempo | Preço |
-            | 1hora | 24.00 |
-            | 2horas | 28.0 |
-            | 3horas | 32.00 |
-            | Adicional | 3.20/hora |
-            | ====================== |"""
+            [>] Esta é a nossa tabela de preços
+                | ====================== |
+                | Tempo | Preço |
+                | ------------- |
+                | 1hora | 24.00 |
+                | 2horas | 28.0 |
+                | 3horas | 32.00 |
+                | Adicional | 3.20/hora |
+                | ====================== |"""
         );
     }
 
@@ -58,59 +57,70 @@ public final class InterfaceServico {
 
     // TODO
     private static void exibirInformacoesTicket() {
-        String identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");
+        String identificadorTicket = LeituraUtilidade
+                .lerString("[<] Digite o identificador do seu Ticket: ");
         Interface.exibirEspacamento();
 
         obterInformacoesTicket(identificadorTicket);
     }
 
     private static void obterInformacoesTicket(String identificador) {
-        String identificadorTicket = identificador;
-
         System.out.println(
         """
-        Informações sobre o Ticket
-        Identificador do Ticket: abc123u
-        Vaga ocupada: 102
-        Preço total: R$ 210"""
+        [>] Informações sobre o Ticket
+            Identificador do Ticket: asd123f
+            Vaga ocupada: 98
+            Preço total: R$ 90"""
         );
     }
 
     // TODO
     private static void alugarVaga() {
-        boolean finalizar_alugel = false;
+        boolean finalizarAlugel = false;
+
         int mediaTempo;
         int vagaDesejada;
 
-        while (!finalizar_alugel) {
+        while (!finalizarAlugel) {
             exibirTabelaPrecos();
             Interface.exibirEspacamento();
 
             System.out.println(
                     """
-                    [1] Alugar uma vaga aletoria
-                    [2] Alugar uma vaga especifica
-                    [3] Retroceder\n"""
+                    [>] Operações disponíveis
+                        [1] Alugar uma vaga aletoria
+                        [2] Alugar uma vaga especifica
+                        [3] Retroceder\n"""
             );
 
-            switch(LeituraUtilidade.lerInteiro()) {
+            /* TODO
+            * As 21h:25min:25sec de 17 de Out de 2024 eu percebi a
+            * descenessidade de ter exatamente quase igualmente igualitaria
+            * dois escopos com quase que OS MESMOS CÓDIGOS E LÓGICAS
+            * sendo duplicads PARA FAZER UMA COISA
+            *
+            *
+            * provavelmente em 18 de Out de 2024 a partir das 10h:30min eu deva
+            * consertar isto.
+            * */
+            switch(LeituraUtilidade.lerInteiro("[<] Digite o número da operação: ")) {
                 case 1:
                     Interface.exibirSeparador();
                     mediaTempo = LeituraUtilidade.lerInteiro(
                        """
-                        Por quanto gostaria de ficar (em media)?
-                        Digite o tempo em minutos >\s"""
+                        [>] Por quanto tempo gostaria de ficar?
+                        [<] Digite o tempo em minutos (ex: 60):\s"""
                     );
 
                     Interface.exibirEspacamento();
-                    System.out.println("Vaga alugada com sucesso!");
+                    System.out.println("[>] Vaga alugada com sucesso!");
                     Interface.exibirEspacamento();
 
                     // TODO
                     // esse cara deve ser chamado por criar novo ticket
                     alugarNovoTicket();
 
-                    finalizar_alugel = true;
+                    finalizarAlugel = true;
                     break;
                 case 2:
                     Interface.exibirSeparador();
@@ -119,28 +129,28 @@ public final class InterfaceServico {
 
                     mediaTempo = LeituraUtilidade.lerInteiro(
                             """
-                             Por quanto gostaria de ficar (em media)?
-                             Digite o tempo em minutos >\s"""
+                             [>] Por quanto tempo gostaria de ficar?
+                             [<] Digite o tempo em minutos (ex: 60):\s"""
                     );
 
                     vagaDesejada = LeituraUtilidade.lerInteiro(
-                            "Digite o número da vaga desejada > "
+                            "[<] Digite o número da vaga desejada: "
                     );
                     Interface.exibirEspacamento();
 
-                    System.out.println("Vaga alugada com sucesso!");
+                    System.out.println("[>] Vaga alugada com sucesso!");
                     Interface.exibirEspacamento();
 
                     // TODO
                     // esse cara deve ser chamado por criar novo ticket
                     alugarNovoTicket();
-                    finalizar_alugel = true;
+                    finalizarAlugel = true;
                     break;
                 case 3:
-                    finalizar_alugel = true;
+                    finalizarAlugel = true;
                     break;
                 default:
-                    System.out.println("\nERRO: Uma opção inexistente foi selecionada.\n");
+                    System.out.println("\n[ERRO]: Uma opção inexistente foi selecionada.\n");
                     break;
             };
         }
@@ -149,7 +159,7 @@ public final class InterfaceServico {
     // TODO
     private static void pagarTicket() {
         boolean finalizar_pagamento = false;
-        String identificadorTicket = LeituraUtilidade.lerString("Digite o identificador do Ticket > ");;
+        String identificadorTicket = LeituraUtilidade.lerString("[>] Digite o identificador do Ticket: ");;
 
         while (!finalizar_pagamento) {
             Interface.exibirSeparador();
@@ -165,7 +175,7 @@ public final class InterfaceServico {
             switch(LeituraUtilidade.lerInteiro()) {
                 case 1:
                     Interface.exibirSeparador();
-                    System.out.println("Ticket abc123u no valor de R$ 210 foi pago com sucesso!");
+                    System.out.println("[>] Ticket abc123u no valor de R$ 210 foi pago com sucesso.");
                     Interface.exibirSeparador();
                     finalizar_pagamento = true;
                     break;
@@ -193,7 +203,7 @@ public final class InterfaceServico {
                 exibirOperacoes();
                 Interface.exibirEspacamento();
 
-                switch(LeituraUtilidade.lerInteiro()) {
+                switch(LeituraUtilidade.lerInteiro("[<] Digite o número da operação: ")) {
                     case 1: // Listar vagas disponiveis
                         Interface.exibirSeparador();
                         exibirVagasDisponiveis();
