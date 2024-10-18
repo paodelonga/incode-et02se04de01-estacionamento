@@ -16,12 +16,12 @@ public final class InterfaceServico {
         System.out.println(
             """
             [>] Operações disponíveis.
-                [1] Listar vagas disponíveis
-                [2] Exibir tabela de preços
-                [3] Listar informações de um Ticket
-                [4] Alugar uma vaga
-                [5] Pagar um Ticket
-                [6] Sair do sistema"""
+            [1] Listar vagas disponíveis
+            [2] Exibir tabela de preços
+            [3] Listar informações de um Ticket
+            [4] Alugar uma vaga
+            [5] Pagar um Ticket
+            [6] Sair do sistema"""
         );
     }
 
@@ -30,7 +30,7 @@ public final class InterfaceServico {
         System.out.println(
             """
             [>] Estas são as vagas disponíveis atualmente:
-                1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
+            1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
         );
     }
 
@@ -39,14 +39,14 @@ public final class InterfaceServico {
         System.out.println(
             """
             [>] Esta é a nossa tabela de preços
-                | ====================== |
-                | Tempo | Preço |
-                | ------------- |
-                | 1hora | 24.00 |
-                | 2horas | 28.0 |
-                | 3horas | 32.00 |
-                | Adicional | 3.20/hora |
-                | ====================== |"""
+            | ====================== |
+            | Tempo | Preço |
+            | ------------- |
+            | 1hora | 24.00 |
+            | 2horas | 28.0 |
+            | 3horas | 32.00 |
+            | Adicional | 3.20/hora |
+            | ====================== |"""
         );
     }
 
@@ -68,9 +68,9 @@ public final class InterfaceServico {
         System.out.println(
         """
         [>] Informações sobre o Ticket
-            Identificador do Ticket: asd123f
-            Vaga ocupada: 98
-            Preço total: R$ 90"""
+        Identificador do Ticket: asd123f
+        Vaga ocupada: 98
+        Preço total: R$ 90"""
         );
     }
 
@@ -88,9 +88,9 @@ public final class InterfaceServico {
             System.out.println(
                     """
                     [>] Operações disponíveis
-                        [1] Alugar uma vaga aletoria
-                        [2] Alugar uma vaga especifica
-                        [3] Retroceder\n"""
+                    [1] Alugar uma vaga aletoria
+                    [2] Alugar uma vaga especifica
+                    [3] Retroceder\n"""
             );
 
             /* TODO
@@ -113,11 +113,11 @@ public final class InterfaceServico {
                     );
 
                     Interface.exibirEspacamento();
-                    System.out.println("[>] Vaga alugada com sucesso!");
+                    System.out.println("[>] Vaga alugada com sucesso.");
                     Interface.exibirEspacamento();
 
                     // TODO
-                    // esse cara deve ser chamado por criar novo ticket
+                    // esse cara deveria ser chamado por criar novo ticket
                     alugarNovoTicket();
 
                     finalizarAlugel = true;
@@ -138,7 +138,7 @@ public final class InterfaceServico {
                     );
                     Interface.exibirEspacamento();
 
-                    System.out.println("[>] Vaga alugada com sucesso!");
+                    System.out.println("[>] Vaga alugada com sucesso");
                     Interface.exibirEspacamento();
 
                     // TODO
@@ -184,7 +184,7 @@ public final class InterfaceServico {
                     finalizar_pagamento = true;
                     break;
                 default:
-                    System.out.println("\nERRO: Uma opção inexistente foi selecionada.");
+                    System.out.println("\n[ERRO]: Uma opção inexistente foi selecionada.");
                     break;
             }
         }
@@ -231,7 +231,7 @@ public final class InterfaceServico {
                         finalizar_sistema = true;
                         break;
                     default:
-                        System.out.println("\nERRO: Uma opção inexistente foi selecionada.\n");
+                        System.out.println("\n[ERRO]: Uma opção inexistente foi selecionada.\n");
                         break;
                 }
             }
