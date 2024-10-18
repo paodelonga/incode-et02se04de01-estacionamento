@@ -3,13 +3,22 @@ package maquina_de_ticket.UI;
 import maquina_de_ticket.Utilidade.LeituraUtilidade;
 import maquina_de_ticket.Utilidade.Interface;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public final class InterfaceUI {
-    // TODO
+    // TODO go to a service bruh3
     private static String obterBoasVindas() {
-        return """
-         Bem-vindo ao Estacionamento
-        Hora atual: 00:00, 12/12/2024
-             Pressione [Enter]""";
+        LocalDateTime horaAtual = LocalDateTime.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("H:mm:ss dd/MM/yyyy");
+
+        return String.format(
+             """
+             Bem-vindo ao Estacionamento
+            Hora atual: %s
+                 Pressione [Enter]""",
+            horaAtual.format(formatador)
+        );
     }
 
     private static void exibirOperacoes() {
