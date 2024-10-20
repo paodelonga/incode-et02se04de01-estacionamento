@@ -1,27 +1,19 @@
 package maquina_de_ticket.Entidade;
 
+import java.util.UUID;
+
 public class Identificador {
-    private String identificadorLongo;
-    private String identificadorCurto;
+    private String identificador;
 
-    public Identificador(String identificador_longo) {
-        identificadorLongo = identificador_longo;
-        identificadorCurto = identificador_longo.split("-")[0];
+    public Identificador(UUID identificador) {
+        setIdentificador(identificador);
     }
 
-    public String getIdentificadorCurto() {
-        return identificadorCurto;
+    public String getIdentificador() {
+        return identificador;
     }
 
-    public String getIdentificadorLongo() {
-        return identificadorLongo;
-    }
-
-    public void setIdentificadorLongo(String identificador_longo) {
-        identificadorLongo = identificador_longo;
-    }
-
-    public void setIdentificadorCurto(String identificador_curto) {
-        identificadorCurto = identificador_curto;
+    public void setIdentificador(UUID identificador) {
+        this.identificador = identificador.toString().split("-")[0];
     }
 }

@@ -1,27 +1,22 @@
 package maquina_de_ticket.UI;
 
+import maquina_de_ticket.Servico.InterfaceServico;
+import maquina_de_ticket.Servico.MaquinaDeTicketServico;
 import maquina_de_ticket.Utilidade.LeituraUtilidade;
 import maquina_de_ticket.Utilidade.Interface;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public final class InterfaceUI {
-    // TODO go to a service bruh3
-    private static String obterBoasVindas() {
-        LocalDateTime horaAtual = LocalDateTime.now();
-        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("H:mm:ss dd/MM/yyyy");
+    private MaquinaDeTicketServico maquinaDeTicketServico;
 
-        return String.format(
-             """
-             Bem-vindo ao Estacionamento
-            Hora atual: %s
-                 Pressione [Enter]""",
-            horaAtual.format(formatador)
-        );
+    public InterfaceUI(MaquinaDeTicketServico maquina_de_ticket_servico) {
+        maquinaDeTicketServico = maquina_de_ticket_servico;
     }
 
-    private static void exibirOperacoes() {
+    private String obterBoasVindas() {
+        return InterfaceServico.gerarBoasVindas();
+    }
+
+    private void exibirOperacoes() {
         System.out.println(
             """
             [>] Operações disponíveis.
@@ -35,7 +30,7 @@ public final class InterfaceUI {
     }
 
     // TODO
-    private static void exibirVagasDisponiveis() {
+    private void exibirVagasDisponiveis() {
         System.out.println(
             """
             [>] Estas são as vagas disponíveis atualmente:
@@ -44,7 +39,7 @@ public final class InterfaceUI {
     }
 
     // TODO
-    private static void exibirTabelaPrecos() {
+    private void exibirTabelaPrecos() {
         System.out.println(
             """
             [>] Esta é a nossa tabela de preços
@@ -60,12 +55,12 @@ public final class InterfaceUI {
     }
 
     // TODO
-    private static void alugarNovoTicket() {
+    private void alugarNovoTicket() {
         obterInformacoesTicket("A");
     }
 
     // TODO
-    private static void exibirInformacoesTicket() {
+    private void exibirInformacoesTicket() {
         String identificadorTicket = LeituraUtilidade
                 .lerString("[<] Digite o identificador do seu Ticket: ");
         Interface.exibirEspacamento();
@@ -73,7 +68,7 @@ public final class InterfaceUI {
         obterInformacoesTicket(identificadorTicket);
     }
 
-    private static void obterInformacoesTicket(String identificador) {
+    private void obterInformacoesTicket(String identificador) {
         System.out.println(
         """
         [>] Informações sobre o Ticket
@@ -84,7 +79,7 @@ public final class InterfaceUI {
     }
 
     // TODO
-    private static void alugarVaga() {
+    private void alugarVaga() {
         boolean finalizarAlugel = false;
 
         int mediaTempo;
@@ -165,7 +160,7 @@ public final class InterfaceUI {
     }
 
     // TODO
-    private static void pagarTicket() {
+    private void pagarTicket() {
         boolean finalizar_pagamento = false;
         String identificadorTicket = LeituraUtilidade.lerString("[>] Digite o identificador do Ticket: ");
 
@@ -199,7 +194,7 @@ public final class InterfaceUI {
 
     }
 
-    public static void iniciarSistema() {
+    public void iniciarInterface() {
         if(LeituraUtilidade.lerEnter(obterBoasVindas())) {
             Interface.exibirSeparador();
             exibirTabelaPrecos();
