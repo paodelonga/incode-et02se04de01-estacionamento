@@ -1,7 +1,6 @@
 package maquina_de_ticket.Entidade;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class Ticket {
     private Identificador identificador;

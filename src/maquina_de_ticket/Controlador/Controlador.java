@@ -13,10 +13,6 @@ public class Controlador {
         return false;
     }
 
-    /*
-    * Criar vaga
-    * Adiciona ela
-    *  */
     public static Boolean alugarNovoTicket() {
         return false;
     }

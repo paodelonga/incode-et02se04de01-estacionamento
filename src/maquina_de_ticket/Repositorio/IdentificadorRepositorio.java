@@ -2,20 +2,20 @@ package maquina_de_ticket.Repositorio;
 
 import maquina_de_ticket.Entidade.Identificador;
 
-import java.util.HashSet;
+import java.util.LinkedList;
 
 public class IdentificadorRepositorio {
-    private HashSet<Identificador> identificadoresGerados;
+    private LinkedList<Identificador> identificadoresGerados;
 
     public IdentificadorRepositorio() {
-        identificadoresGerados = new HashSet<Identificador>();
+        identificadoresGerados = new LinkedList<Identificador>();
     }
 
-    public HashSet<Identificador> getIdentificadoresGerados() {
+    public LinkedList<Identificador> getIdentificadoresGerados() {
         return identificadoresGerados;
     }
 
-    public void setIdentificadoresGerados(HashSet<Identificador> identificadores_gerados) {
+    public void setIdentificadoresGerados(LinkedList<Identificador> identificadores_gerados) {
         identificadoresGerados = identificadores_gerados;
     }
 

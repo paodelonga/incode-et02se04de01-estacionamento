@@ -7,25 +7,30 @@ import maquina_de_ticket.Utilidade.Interface;
 
 public final class InterfaceUI {
     private MaquinaDeTicketServico maquinaDeTicketServico;
+    private InterfaceServico interfaceServico;
 
-    public InterfaceUI(MaquinaDeTicketServico maquina_de_ticket_servico) {
+    public void setMaquinaDeTicketServico(MaquinaDeTicketServico maquina_de_ticket_servico) {
         maquinaDeTicketServico = maquina_de_ticket_servico;
     }
 
+    public void setInterfaceServico(InterfaceServico interface_servico) {
+        interfaceServico = interface_servico;
+    }
+
     private String obterBoasVindas() {
-        return InterfaceServico.gerarBoasVindas();
+        return interfaceServico.gerarBoasVindas();
     }
 
     private void exibirOperacoes() {
         System.out.println(
             """
-            [>] Operações disponíveis.
-            [1] Listar vagas disponíveis
-            [2] Exibir tabela de preços
-            [3] Listar informações de um Ticket
-            [4] Alugar uma vaga
-            [5] Pagar um Ticket
-            [6] Sair do sistema"""
+                [>] Operações disponíveis.
+                [1] Listar vagas disponíveis
+                [2] Exibir tabela de preços
+                [3] Listar informações de um Ticket
+                [4] Alugar uma vaga
+                [5] Pagar um Ticket
+                [6] Sair do sistema"""
         );
     }
 
@@ -33,24 +38,18 @@ public final class InterfaceUI {
     private void exibirVagasDisponiveis() {
         System.out.println(
             """
-            [>] Estas são as vagas disponíveis atualmente:
-            1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
+                [>] Estas são as vagas disponíveis atualmente:
+                1, 2, 18, 23, 26, 27, 28, 29, 30, 31, 32, 33, 34"""
         );
     }
 
     // TODO
     private void exibirTabelaPrecos() {
         System.out.println(
-            """
-            [>] Esta é a nossa tabela de preços
-            | ====================== |
-            | Tempo | Preço |
-            | ------------- |
-            | 1hora | 24.00 |
-            | 2horas | 28.0 |
-            | 3horas | 32.00 |
-            | Adicional | 3.20/hora |
-            | ====================== |"""
+            String.format(
+                "[>] Esta é a nossa tabela de preços\n%s",
+                interfaceServico.gerarTabelaDePrecos()
+            )
         );
     }
 
@@ -62,7 +61,7 @@ public final class InterfaceUI {
     // TODO
     private void exibirInformacoesTicket() {
         String identificadorTicket = LeituraUtilidade
-                .lerString("[<] Digite o identificador do seu Ticket: ");
+            .lerString("[<] Digite o identificador do seu Ticket: ");
         Interface.exibirEspacamento();
 
         obterInformacoesTicket(identificadorTicket);
@@ -70,11 +69,11 @@ public final class InterfaceUI {
 
     private void obterInformacoesTicket(String identificador) {
         System.out.println(
-        """
-        [>] Informações sobre o Ticket
-        Identificador do Ticket: asd123f
-        Vaga ocupada: 98
-        Preço total: R$ 90"""
+            """
+                [>] Informações sobre o Ticket
+                Identificador do Ticket: asd123f
+                Vaga ocupada: 98
+                Preço total: R$ 90"""
         );
     }
 
@@ -89,7 +88,7 @@ public final class InterfaceUI {
             exibirTabelaPrecos();
             Interface.exibirEspacamento();
             System.out.print(
-                    """
+                """
                     [>] Operações disponíveis
                     [1] Alugar uma vaga aletoria
                     [2] Alugar uma vaga especifica
@@ -97,22 +96,22 @@ public final class InterfaceUI {
             );
 
             /* TODO
-            * As 21h:25min:25sec de 17 de Out de 2024 eu percebi a
-            * descenessidade de ter exatamente quase igualmente igualitaria
-            * dois escopos com quase que OS MESMOS CÓDIGOS E LÓGICAS
-            * sendo duplicads PARA FAZER UMA COISA
-            *
-            *
-            * provavelmente em 18 de Out de 2024 a partir das 10h:30min eu deva
-            * consertar isto.
-            * */
-            switch(LeituraUtilidade.lerInteiro("[<] Digite o número da operação: ")) {
+             * As 21h:25min:25sec de 17 de Out de 2024 eu percebi a
+             * descenessidade de ter exatamente quase igualmente igualitaria
+             * dois escopos com quase que OS MESMOS CÓDIGOS E LÓGICAS
+             * sendo duplicads PARA FAZER UMA COISA
+             *
+             *
+             * provavelmente em 18 de Out de 2024 a partir das 10h:30min eu deva
+             * consertar isto.
+             * */
+            switch (LeituraUtilidade.lerInteiro("[<] Digite o número da operação: ")) {
                 case 1:
                     Interface.exibirSeparador();
                     mediaTempo = LeituraUtilidade.lerInteiro(
-                       """
-                        [>] Por quanto tempo gostaria de ficar?
-                        [<] Digite o tempo em minutos (ex: 60):\s"""
+                        """
+                            [>] Por quanto tempo gostaria de ficar?
+                            [<] Digite o tempo em minutos (ex: 60):\s"""
                     );
 
                     Interface.exibirEspacamento();
@@ -131,13 +130,13 @@ public final class InterfaceUI {
                     Interface.exibirEspacamento();
 
                     mediaTempo = LeituraUtilidade.lerInteiro(
-                            """
-                             [>] Por quanto tempo gostaria de ficar?
-                             [<] Digite o tempo em minutos (ex: 60):\s"""
+                        """
+                            [>] Por quanto tempo gostaria de ficar?
+                            [<] Digite o tempo em minutos (ex: 60):\s"""
                     );
 
                     vagaDesejada = LeituraUtilidade.lerInteiro(
-                            "[<] Digite o número da vaga desejada: "
+                        "[<] Digite o número da vaga desejada: "
                     );
                     Interface.exibirEspacamento();
 
@@ -171,11 +170,11 @@ public final class InterfaceUI {
 
             System.out.println(
                 """
-                [1] Pagar
-                [2] Retroceder\n"""
+                    [1] Pagar
+                    [2] Retroceder\n"""
             );
 
-            switch(LeituraUtilidade.lerInteiro()) {
+            switch (LeituraUtilidade.lerInteiro()) {
                 case 1:
                     Interface.exibirSeparador();
                     System.out.println("[>] Ticket abc123u no valor de R$ 210 foi pago com sucesso.");
@@ -195,18 +194,16 @@ public final class InterfaceUI {
     }
 
     public void iniciarInterface() {
-        if(LeituraUtilidade.lerEnter(obterBoasVindas())) {
-            Interface.exibirSeparador();
-            exibirTabelaPrecos();
-            Interface.exibirEspacamento();
-
+        if (LeituraUtilidade.lerEnter(obterBoasVindas())) {
             boolean finalizar_sistema = false;
 
-            while(!finalizar_sistema) {
+            Interface.exibirSeparador();
+
+            while (!finalizar_sistema) {
                 exibirOperacoes();
                 Interface.exibirEspacamento();
 
-                switch(LeituraUtilidade.lerInteiro("[<] Digite o número da operação: ")) {
+                switch (LeituraUtilidade.lerInteiro("[<] Digite o número da operação: ")) {
                     case 1: // Listar vagas disponiveis
                         Interface.exibirSeparador();
                         exibirVagasDisponiveis();

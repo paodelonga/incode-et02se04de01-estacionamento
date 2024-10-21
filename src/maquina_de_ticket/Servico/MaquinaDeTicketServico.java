@@ -1,44 +1,51 @@
 package maquina_de_ticket.Servico;
 
-import maquina_de_ticket.Entidade.TabelaPreco;
 import maquina_de_ticket.Entidade.Identificador;
 import maquina_de_ticket.Entidade.Tarifa;
 import maquina_de_ticket.Entidade.Ticket;
 import maquina_de_ticket.Entidade.Vaga;
 
-import maquina_de_ticket.Repositorio.EstacionamentoRepositorio;
-import maquina_de_ticket.Repositorio.IdentificadorRepositorio;
-import maquina_de_ticket.Repositorio.TicketRepositorio;
-import maquina_de_ticket.Repositorio.VagaRepositorio;
+import maquina_de_ticket.Repositorio.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 
 public class MaquinaDeTicketServico {
     private Identificador identificador;
-    private TabelaPreco tabela_preco;
     private Ticket ticket;
     private Vaga vaga;
 
-    private EstacionamentoRepositorio estacionamentoRepositorio;
-    private IdentificadorRepositorio identificadorRepositorio;
-    private TicketRepositorio ticketRepositorio;
-    private VagaRepositorio vagaRepositorio;
+    private EstacionamentoRepositorio repositorioEstacionamento;
+    private IdentificadorRepositorio repositorioIdentificador;
+    private TarifaRepositorio repositorioTarifa;
+    private TicketRepositorio repositorioTicket;
+    private VagaRepositorio repositorioVaga;
 
-    public MaquinaDeTicketServico() {
-        TabelaPreco tabela_preco = new TabelaPreco(new ArrayList<>(Arrays.asList(
-                new Tarifa((float) 24.00, "h", (float) 1.00),
-                new Tarifa((float) 1.00, "d", (float) 2.00),
-                new Tarifa((float) 32.00, "m", (float) 4.00)
-        )));
-
-        estacionamentoRepositorio = new EstacionamentoRepositorio(
-                (short) 512,
-                tabela_preco
+    public MaquinaDeTicketServico(Short quantidade_vagas) {
+        repositorioEstacionamento = new EstacionamentoRepositorio(
+            quantidade_vagas
         );
 
-        vagaRepositorio = new VagaRepositorio(estacionamentoRepositorio.getQuantidadeVaga());
-        identificadorRepositorio = new IdentificadorRepositorio();
-        ticketRepositorio = new TicketRepositorio();
+        repositorioVaga = new VagaRepositorio(
+            repositorioEstacionamento.getQuantidadeVaga()
+        );
+
+        repositorioIdentificador = new IdentificadorRepositorio();
+        repositorioTicket = new TicketRepositorio();
+        repositorioTarifa = new TarifaRepositorio();
+    }
+
+    public void adicionarTarifa(Tarifa tarifa) {
+        repositorioTarifa.addTarifa(tarifa);
+    }
+    public void adicionarTarifa(Float valor, String unidade, Float tempo) {
+        repositorioTarifa.addTarifa(new Tarifa(valor, unidade, tempo));
+    }
+
+    public void removerTarifa(Tarifa tarifa) {
+        repositorioTarifa.removeTarifa(tarifa);
+    }
+
+    public LinkedList<Tarifa> obterTarifas() {
+        return repositorioTarifa.getTarifas();
     }
 }

@@ -2,39 +2,28 @@ package maquina_de_ticket.Repositorio;
 
 import maquina_de_ticket.Entidade.Vaga;
 
-import java.util.HashSet;
+import java.util.LinkedList;
 
 public class VagaRepositorio {
-    private HashSet<Vaga> vagasAlugadas;
-    private Short[] listaVagasDisponiveis;
+    private LinkedList<Vaga> vagasAlugadas;
 
     public VagaRepositorio(Short quantidadeVagasDisponiveis) {
-        vagasAlugadas = new HashSet<Vaga>();
-        listaVagasDisponiveis = new Short[quantidadeVagasDisponiveis];
+        vagasAlugadas = new LinkedList<Vaga>();
     }
 
-    public HashSet<Vaga> getVagasAlugadas() {
+    public LinkedList<Vaga> getVagasAlugadas() {
         return vagasAlugadas;
     }
 
-    public void setVagasAlugadas(HashSet<Vaga> vagas_ocupadas) {
+    public void setVagasAlugadas(LinkedList<Vaga> vagas_ocupadas) {
         vagasAlugadas = vagas_ocupadas;
     }
 
-    public Short[] getListaVagasDisponiveis() {
-        System.out.println(listaVagasDisponiveis);
-        return listaVagasDisponiveis;
+    public Boolean adicionarVaga(Vaga vaga) {
+        return vagasAlugadas.add(vaga);
     }
 
-    public void setListaVagasDisponiveis(Short[] vagas_disponiveis) {
-        listaVagasDisponiveis = vagas_disponiveis;
-    }
-
-    public void adicionarVaga(Vaga vaga) {
-        vagasAlugadas.add(vaga);
-    }
-
-    public void removerVaga(Vaga vaga) {
-        vagasAlugadas.remove(vaga);
+    public Boolean removerVaga(Vaga vaga) {
+        return vagasAlugadas.remove(vaga);
     }
 }
